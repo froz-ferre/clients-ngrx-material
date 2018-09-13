@@ -3,62 +3,20 @@ import * as clientAction from '../actions/clients';
 
 import { Client } from '../models/client.model';
 
-const Liana: Client = {
-    general: {
-        firstName: 'Liana',
-        lastName: 'Crooks',
-        avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/kevinoh/128.jpg'
-      },
-      job: {
-        company: 'Ledner, Johnson and Predovic',
-        title: 'Investor Functionality Coordinator'
-      },
-      contact: {
-        email: 'Gerry_Hackett77@gmail.com',
-        phone: '(895) 984-0132'
-      },
-      address: {
-        street: '1520 Zemlak Cove',
-        city: 'New Devon',
-        zipCode: '42586-7898',
-        country: 'Guinea-Bissau'
-      }
-};
-
-const Liana2: Client = {
-    general: {
-        firstName: 'Liana2',
-        lastName: 'Crooks',
-        avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/kevinoh/128.jpg'
-      },
-      job: {
-        company: 'Ledner, Johnson and Predovic',
-        title: 'Investor Functionality Coordinator'
-      },
-      contact: {
-        email: 'Gerry_Hackett77@gmail.com',
-        phone: '(895) 984-0132'
-      },
-      address: {
-        street: '1520 Zemlak Cove',
-        city: 'New Devon',
-        zipCode: '42586-7898',
-        country: 'Guinea-Bissau'
-      }
-};
-
 export interface State {
     // ids: number[];
     clients: Client[];
     selected: number;
+    searchQuery: string;
+    error: any | null;
 }
 
 const initialState: State = {
     // ids: [0, 1, 2, 3],
-    clients: [
-        Liana, Liana2
-    ],
-    selected: null
+    clients: [ ],
+    selected: null,
+    searchQuery: '',
+    error: null
 };
 
 export function reducer(state = initialState, action: clientAction.Actions ): State {
@@ -75,8 +33,23 @@ export function reducer(state = initialState, action: clientAction.Actions ): St
             const clients = action.payload;
             return {
                 ...state,
-                // ids: clients.length,
                 clients: clients
+            };
+        }
+
+        case clientAction.ActionTypes.LOAD_CLIENTS_FAIL: {
+            const error = action.payload;
+            return {
+                ...state,
+                error: error
+            };
+        }
+
+        case clientAction.ActionTypes.SEARCH: {
+            const query = action.payload;
+            return {
+                ...state,
+                searchQuery: query
             };
         }
 
@@ -89,3 +62,4 @@ export function reducer(state = initialState, action: clientAction.Actions ): St
 // export const getIds = (state: State) => state.ids;
 export const getClients = (state: State) => state.clients;
 export const getSelected = (state: State) => state.selected;
+export const getSearchQuery = (state: State) => state.searchQuery;

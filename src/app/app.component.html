@@ -3,7 +3,9 @@
             
 <mat-drawer-container class="example-container">
         <mat-drawer mode="side" opened>
-            <app-search></app-search>
+            <app-search
+                (search)="onSearch($event)">
+            </app-search>
             <app-clients-list
                 [clients]="clients$ | async"
                 (select)="onSelect($event)">

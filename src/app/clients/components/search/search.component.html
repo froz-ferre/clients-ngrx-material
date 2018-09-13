@@ -1,6 +1,8 @@
 <form>
     <mat-form-field class="example-form-field">
-        <input matInput type="text" placeholder="&nbsp;&nbsp;Search" >
+        <input matInput type="text" 
+        placeholder="&nbsp;&nbsp;Search" 
+        (keyup)="search.emit($event.target.value)">
         <button mat-button  matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
           <mat-icon>close</mat-icon>
         </button>

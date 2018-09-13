@@ -28,6 +28,11 @@ export const getSelected = createSelector(
     fromClients.getSelected
 );
 
+export const getSearchQuery = createSelector(
+    getClientState,
+    fromClients.getSearchQuery
+);
+
 export const getSelectedClient = createSelector(
     getSelected,
     getClients,
@@ -46,6 +51,16 @@ export const getAllClients = createSelector(
     // }
     getClients,
     (clients) => {
+        return [...clients];
+    }
+);
+
+export const searchClients = createSelector(
+    getClients,
+    getSearchQuery,
+    (clients, query) => {
+        console.log(query);
+        clients = clients.filter(client => client.general.firstName.toLowerCase().indexOf(query.toLowerCase()) !== -1);
         return [...clients];
     }
 );

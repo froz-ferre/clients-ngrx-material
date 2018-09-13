@@ -26,4 +26,9 @@ export class AppComponent {
   onSelect(id: number) {
     this.store.dispatch(new clientAction.Select(id));
   }
+
+  onSearch(query: string) {
+    this.store.dispatch(new clientAction.Search(query));
+    this.clients$ = this.store.select(fromStore.searchClients);
+  }
 }
