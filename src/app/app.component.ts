@@ -19,6 +19,8 @@ export class AppComponent {
   constructor(private store: Store<fromStore.State>) {
     this.clients$ = store.select(fromStore.getAllClients);
     this.selected$ = store.select(fromStore.getSelectedClient);
+
+    console.log('TODO: set class "active" on selected client (pink border)');
   }
 
   onSelect(id: number) {

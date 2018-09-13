@@ -1,11 +1,14 @@
 import { Action } from '@ngrx/store';
+import { Client } from '../models/client.model';
 
 /**
  * For each action type in an action group, make a simple
  * enum object for all of this group's action types.
  */
 export enum ActionTypes {
-    SELECT = '[Client] SELECT'
+    SELECT = '[Client] SELECT',
+    LOAD_CLIENTS = '[Client] Load clients',
+    LOAD_CLIENTS_FAIL = '[Client] Load failed :C'
 }
 
 /**
@@ -19,8 +22,23 @@ export class Select implements Action {
     constructor(public payload: number) { }
 }
 
+export class LoadClients implements Action {
+    readonly type = ActionTypes.LOAD_CLIENTS;
+
+    constructor(public payload: Client[]) {}
+}
+
+export class LoadClientsFail implements Action {
+    readonly type = ActionTypes.LOAD_CLIENTS_FAIL;
+
+    constructor(public payload: any) {}
+}
+
+
 /**
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
  */
-export type Actions = Select;
+export type Actions =   Select         |
+                        LoadClients    |
+                        LoadClientsFail;

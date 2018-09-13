@@ -13,10 +13,10 @@ export const reducers: ActionReducerMap<State> = {
 
 export const getClientState = createFeatureSelector<fromClients.State>('clients');
 
-export const getIds = createSelector(
-    getClientState,
-    fromClients.getIds
-);
+// export const getIds = createSelector(
+//     getClientState,
+//     fromClients.getIds
+// );
 
 export const getClients = createSelector(
     getClientState,
@@ -39,10 +39,14 @@ export const getSelectedClient = createSelector(
 );
 
 export const getAllClients = createSelector(
-    getIds,
+    // getIds,
+    // getClients,
+    // (ids, clients) => {
+    //     return ids.map(id => clients[id]);
+    // }
     getClients,
-    (ids, clients) => {
-        return ids.map(id => clients[id]);
+    (clients) => {
+        return [...clients];
     }
 );
 

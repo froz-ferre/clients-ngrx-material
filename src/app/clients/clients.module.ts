@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './components/search/search.component';
 import { ClientsListComponent } from './components/clients-list/clients-list.component';
 import { ClientDetailsComponent } from './components/client-details/client-details.component';
+import { EffectsModule } from '@ngrx/effects';
 
 import {
   MatAutocompleteModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatCheckboxModule,
+  MatCardModule,
   MatDatepickerModule,
   MatDialogModule,
   MatExpansionModule,
@@ -44,7 +47,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import {PlatformModule} from '@angular/cdk/platform';
 import {ObserversModule} from '@angular/cdk/observers';
 import {PortalModule} from '@angular/cdk/portal';
-import {MatCardModule} from '@angular/material/card';
+import { ApiService } from './services/api.service';
+import { ApiEffects } from './services/api.effect';
 
 
 /**
@@ -65,10 +69,13 @@ const MAT = [
 @NgModule({
   imports: [
     ...MAT,
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+    EffectsModule.forRoot([ApiEffects])
   ],
+  providers: [ApiService],
   declarations: [SearchComponent, ClientsListComponent, ClientDetailsComponent],
-  exports: [SearchComponent, ClientsListComponent, ClientDetailsComponent, 
+  exports: [SearchComponent, ClientsListComponent, ClientDetailsComponent,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,

@@ -48,13 +48,13 @@ const Liana2: Client = {
 };
 
 export interface State {
-    ids: number[];
+    // ids: number[];
     clients: Client[];
     selected: number;
 }
 
 const initialState: State = {
-    ids: [0, 1],
+    // ids: [0, 1, 2, 3],
     clients: [
         Liana, Liana2
     ],
@@ -71,12 +71,21 @@ export function reducer(state = initialState, action: clientAction.Actions ): St
             };
         }
 
+        case clientAction.ActionTypes.LOAD_CLIENTS: {
+            const clients = action.payload;
+            return {
+                ...state,
+                // ids: clients.length,
+                clients: clients
+            };
+        }
+
         default: {
             return state;
         }
     }
 }
 
-export const getIds = (state: State) => state.ids;
+// export const getIds = (state: State) => state.ids;
 export const getClients = (state: State) => state.clients;
 export const getSelected = (state: State) => state.selected;
