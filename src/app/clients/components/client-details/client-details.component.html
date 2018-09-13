@@ -1,0 +1,46 @@
+<div class="wrapper" *ngIf="client.general">
+  <section class="header">
+    <div class="avatar">
+      <img src="{{ client.general.avatar }}" alt="">
+    </div>
+    <div class="header-info">
+      <h1>{{ client.general.firstName }} {{ client.general.lastName }}</h1>
+      <h3>"{{ client.job.title }} - {{ client.job.company }}"</h3>
+    </div>
+  </section>
+  <mat-divider></mat-divider>
+  <section class="details">
+    <fieldset class="contacts">
+      <legend>&nbsp;&nbsp;contacts&nbsp;&nbsp;</legend>
+      <p>email: {{ client.contact.email }}</p>
+      <p>phone: {{ client.contact.phone }}</p>
+    </fieldset>
+    <fieldset class="address">
+      <legend>&nbsp;&nbsp;address&nbsp;&nbsp;</legend>
+      <p>street: {{ client.address.street }}</p>
+      <p>city: {{ client.address.city }}</p>
+      <p>zipCode: {{ client.address.zipCode }}</p>
+      <p>country: {{ client.address.country }}</p>
+    </fieldset>
+  </section>
+
+</div>
+
+<!-- <mat-card class="wrapper" *ngIf="client.general">
+    <mat-card-header>
+      <img src="{{ client.general.avatar }}" alt="">
+      <mat-card-title>
+          <h1>{{ client.general.firstName }} {{ client.general.lastName }}</h1>
+      </mat-card-title>
+      <mat-card-subtitle>
+          <h2>{{ client.job.title }} - {{ client.job.company }}</h2>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+  </mat-card> -->
