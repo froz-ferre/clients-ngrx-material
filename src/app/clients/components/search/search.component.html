@@ -1,12 +1,6 @@
-<form>
     <mat-form-field class="example-form-field">
-        <input matInput type="text" 
+        <input matInput type="text" #value
         placeholder="&nbsp;&nbsp;Search" 
         (keyup)="search.emit($event.target.value)">
-        <button mat-button  matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-          <mat-icon>close</mat-icon>
-        </button>
+          <mat-icon mat-icon-button matSuffix>search</mat-icon>
       </mat-form-field>
-</form>
-
-<!-- *ngIf="value" -->

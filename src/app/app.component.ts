@@ -21,6 +21,11 @@ export class AppComponent {
     this.selected$ = store.select(fromStore.getSelectedClient);
 
     console.log('TODO: set class "active" on selected client (pink border)');
+    console.log('TODO: при поиске отображаются неправильные данные');
+    /* Потому что в стейте обновляется только поле query, clients
+      же остается прежним.
+      Еще нужно разобраться с эффектами.
+    */
   }
 
   onSelect(id: number) {

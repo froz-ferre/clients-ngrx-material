@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './clients/reducers';
 
 @NgModule({
@@ -17,7 +18,10 @@ import { reducers } from './clients/reducers';
     ClientsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 15
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

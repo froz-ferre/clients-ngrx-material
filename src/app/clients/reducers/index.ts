@@ -59,9 +59,7 @@ export const searchClients = createSelector(
     getClients,
     getSearchQuery,
     (clients, query) => {
-        console.log(query);
-        clients = clients.filter(client => client.general.firstName.toLowerCase().indexOf(query.toLowerCase()) !== -1);
-        return [...clients];
+        return clients.filter(client => client.general.firstName.toLowerCase().indexOf(query.toLowerCase()) !== -1);
     }
 );
 
