@@ -8,3 +8,13 @@
     border-radius: 50%;
     width: 100%; 
   }
+
+  mat-card {
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
+  .active {
+    border-left: 15px solid #c2185b;
+    // background-color:  #c2185b;
+  }

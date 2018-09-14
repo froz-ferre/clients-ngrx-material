@@ -1,7 +1,17 @@
 .example-container {
+    display: flex;
+    display: -webkit-flex;
     width: 100%;
     min-height: 600px;
     height: 100%;
     // margin: 10px;
     // border: 1px solid #555;
+  }
+
+  mat-drawer {
+    min-width: 350px;
+
+    &-content {
+      width: 100%;
+    }
   }

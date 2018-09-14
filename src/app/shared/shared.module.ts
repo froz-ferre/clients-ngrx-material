@@ -9,6 +9,7 @@ import {
   MatSidenavModule,
   MatToolbarModule
 } from '@angular/material';
+import { ActivateDirective } from './directives/activate.directive';
 
 const MAT = [
   MatListModule,
@@ -21,10 +22,11 @@ const MAT = [
 ];
 
 @NgModule({
+  declarations: [ActivateDirective],
   imports: [
     CommonModule,
     ...MAT
   ],
-  exports: [...MAT]
+  exports: [...MAT, ActivateDirective]
 })
 export class SharedModule { }

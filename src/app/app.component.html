@@ -1,20 +1,19 @@
 <mat-toolbar>Clients</mat-toolbar>
 
-            
 <mat-drawer-container class="example-container">
-        <mat-drawer mode="side" opened>
-            <app-search
-                (search)="onSearch($event)">
-            </app-search>
-            <app-clients-list
-                [clients]="clients$ | async"
-                (select)="onSelect($event)">
-            </app-clients-list>    
-        </mat-drawer>
-        <mat-drawer-content>
-            <app-client-details
-                [client]="selected$ | async">
-            </app-client-details>
-        </mat-drawer-content>
+    <mat-drawer mode="side" opened>
+        <app-search
+            (search)="onSearch($event)">
+        </app-search>
+        <app-clients-list
+            [clients]="clients$ | async"
+            (select)="onSelect($event)">
+        </app-clients-list> 
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-client-details
+            [client]="selected$ | async">
+        </app-client-details>
+    </mat-drawer-content>
 </mat-drawer-container>
 

@@ -64,7 +64,6 @@ export const searchClients = createSelector(
 );
 
 function isMatch(client: Client, query: string): boolean {
-    // client.general.firstName.toLowerCase().indexOf(query.toLowerCase()) !== -1)
     for (let key in client) {
         if (key === 'id') { continue; }
         if (typeof(client[key]) === 'object') {
