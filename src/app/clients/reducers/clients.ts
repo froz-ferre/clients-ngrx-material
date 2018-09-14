@@ -1,4 +1,3 @@
-import { Action } from '@ngrx/store';
 import * as clientAction from '../actions/clients';
 
 import { Client } from '../models/client.model';
@@ -30,6 +29,12 @@ export function reducer(state = initialState, action: clientAction.Actions ): St
         }
 
         case clientAction.ActionTypes.LOAD_CLIENTS: {
+            return {
+                ...state,
+            };
+        }
+
+        case clientAction.ActionTypes.LOAD_CLIENTS_SUCCESS: {
             const clients = action.payload;
             return {
                 ...state,

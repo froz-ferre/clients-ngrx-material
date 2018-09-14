@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ClientsModule } from './clients/clients.module';
+import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
 
@@ -15,7 +15,7 @@ import { reducers } from './clients/reducers';
     AppComponent
   ],
   imports: [
-    ClientsModule,
+    CoreModule,
     BrowserModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers),

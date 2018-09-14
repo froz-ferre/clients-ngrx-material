@@ -8,6 +8,7 @@ import { Client } from '../models/client.model';
 export enum ActionTypes {
     SELECT = '[Client] SELECT',
     LOAD_CLIENTS = '[Client] Load clients',
+    LOAD_CLIENTS_SUCCESS = '[Client] Clients loaded',
     LOAD_CLIENTS_FAIL = '[Client] Load failed :C',
     SEARCH = '[Client] Search'
 }
@@ -25,6 +26,10 @@ export class Select implements Action {
 
 export class LoadClients implements Action {
     readonly type = ActionTypes.LOAD_CLIENTS;
+}
+
+export class LoadClientsSuccess implements Action {
+    readonly type = ActionTypes.LOAD_CLIENTS_SUCCESS;
 
     constructor(public payload: Client[]) {}
 }
@@ -46,7 +51,8 @@ export class Search implements Action {
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
  */
-export type Actions =   Select         |
-                        LoadClients    |
-                        LoadClientsFail|
+export type Actions =   Select             |
+                        LoadClients        |
+                        LoadClientsFail    |
+                        LoadClientsSuccess |
                         Search;

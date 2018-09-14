@@ -1,7 +1,7 @@
-import { ActionReducerMap, createSelector, createFeatureSelector,
-    ActionReducer, MetaReducer } from '@ngrx/store';
+import { ActionReducerMap, createSelector, createFeatureSelector } from '@ngrx/store';
 
 import * as fromClients from './clients';
+import { Client } from '../models/client.model';
 
 export interface State {
     clients: fromClients.State;
@@ -59,7 +59,20 @@ export const searchClients = createSelector(
     getClients,
     getSearchQuery,
     (clients, query) => {
-        return clients.filter(client => client.general.firstName.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+        return clients.filter(client => isMatch(client, query));
     }
 );
+
+function isMatch(client: Client, query: string): boolean {
+    // client.general.firstName.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+    for (let key in client) {
+        if (key === 'id') { continue; }
+        if (typeof(client[key]) === 'object') {
+            for (let i in client[key]) {
+                if (client[key][i].toString().toLowerCase().indexOf(query.toLowerCase()) !== -1) { return true; }
+            }
+        }
+    }
+    return false;
+}
 
